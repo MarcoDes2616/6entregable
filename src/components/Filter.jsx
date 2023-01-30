@@ -56,19 +56,19 @@ const Filter = ({ categories }) => {
     }
 
     return (
-
-        <Accordion>
-            <div className='filters'>
-            <h4>Filtros aplicados:</h4>
-            {sumaryFilter &&
-                <p>Precio: de {from} a {to} 
-                <i className='bx bx-x' onClick={() => closeFilter()}></i></p>
-            }
-            {categorySelected &&
-                <p>Categoria: {categorySelected} 
-                <i className='bx bx-x' onClick={() => closeFilter()}></i></p>
-            }
+<>
+        <div className='filters'>
+                <h4>Filtro activo:</h4>
+                {sumaryFilter &&
+                    <p>Precio: de {from} a {to}
+                        <i className='bx bx-x' onClick={() => closeFilter()}></i></p>
+                }
+                {categorySelected &&
+                    <p>Categoria: {categorySelected}
+                        <i className='bx bx-x' onClick={() => closeFilter()}></i></p>
+                }
             </div>
+        <Accordion>
             <Accordion.Item eventKey="0">
                 <Accordion.Header>Filtrar Precio</Accordion.Header>
                 <hr />
@@ -107,14 +107,15 @@ const Filter = ({ categories }) => {
                 <Accordion.Body>
                     {
                         categories.map(category => (
-                            <p className='categories' key={category.id} 
-                            onClick={() => filterCategory(category)}>
-                            {category.name}</p>
+                            <p className='categories' key={category.id}
+                                onClick={() => filterCategory(category)}>
+                                {category.name}</p>
                         ))
                     }
                 </Accordion.Body>
             </Accordion.Item>
         </Accordion>
+        </>
     );
 };
 

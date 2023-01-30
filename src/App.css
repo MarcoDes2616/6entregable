@@ -4,9 +4,15 @@
     box-sizing: border-box;
 }
 .produc_detail{
-    padding: 5rem 3rem;
+    padding: 7rem 3rem 5rem 3rem;
+}
+.produc_detail h2{
+    text-align: center;
 }
 .details{
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 2rem 0;
     display: flex;
     gap: 2rem;
@@ -23,17 +29,26 @@
     gap: 1rem;
     grid-template-columns: 1fr 1fr 1fr;
     height: 100px;
-    width: 80%;
+    width: 310px;
     margin: 0 auto;
     margin-top: 1rem;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
     align-items: center;
     background-color: white;
 }
-.preview img{
-    max-width: 100px;
-    max-height: 70px;
+.img_preview{
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-radius: 8%;
+}
+.img_preview img{
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
 }
 .details__img img{
     width: 90%;
@@ -63,13 +78,15 @@
 .description{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border: 1px solid;
+    justify-content: space-between;
     width: 50%;
+    font-size: .8rem;
 }
 .product_sugestions{
     display: flex;
-    width: 100%;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 2rem;
     flex-direction: row;
     flex-wrap: wrap;
@@ -81,8 +98,9 @@
     width: 100%;
 }
 .product_container{
-    width: calc(100% - 300px);
+    width: calc(100% - 320px);
     margin-top: 7rem;
+    margin-right: 2rem;
     display: flex;
     flex-direction: row;
     gap: 2rem;
@@ -121,8 +139,10 @@
     color: blanchedalmond;
 }
 .filters{
-    height: 100px;
-    margin-bottom: .5rem;
+    height: 80px;
+}
+.filters h4{
+    font-size: 1rem;
 }
 .filters p{
     display: flex;
@@ -131,4 +151,19 @@
     padding: .5rem;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.461);
+}
+.quanty_price{
+    display: flex;
+    justify-content: space-around;
+}
+.quanty_controler{
+    display: flex;
+    justify-content: space-between;
+    height: 1.5rem;
+    width: 90px;
+}
+.quanty_controler button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
