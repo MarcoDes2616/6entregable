@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
     const navigate = useNavigate();
     
     return (
-        <Card style={{ width: '18rem' }} onClick={() => navigate(`/products/${product.id}`)} >
+        <Card className='card' style={{ width: '18rem' }} onClick={() => navigate(`/products/${product.id}`)} >
             <Card.Img className='img_card' variant="top" src={product.images?.[0].url} />
             <Card.Body>
                 <Card.Title>{product.title}</Card.Title>

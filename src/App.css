@@ -9,6 +9,13 @@
 .produc_detail h2{
     text-align: center;
 }
+.card:hover{
+    cursor: pointer;
+}
+.input{
+    width: 100%;
+    padding: 0 15rem;
+}
 .details{
     width: 90%;
     max-width: 1000px;

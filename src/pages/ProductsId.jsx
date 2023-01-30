@@ -24,18 +24,24 @@ const ProductsId = () => {
         axios.get(`https://e-commerce-api-v2.academlo.tech/api/v1/products/${id}`)
             .then((res) => {
                 setProductSelected(res.data);
+                setImgSelected(res.data.images?.[0]);
                 dispatch(filterCategoryThunk(res.data.categoryId))
             })
             .finally(() => dispatch(setLoading(false)))
     }, [id])
 
-    const getImg = () => {
-        if(imgSelected.url){
-            // setImg(productSelected.images.indexOf(imgSelected))
-            return imgSelected.url
-        } else {
-            return productSelected.images?.[img].url
-        }
+    const prev = () => {
+        setImg(img - 1)
+        setImgSelected(productSelected.images?.[img-1])
+    }
+    const next = () => {
+        setImg(img + 1)
+        setImgSelected(productSelected.images?.[img+1])
+    }
+
+    const selectImg = (image) => {
+        setImgSelected(image)
+        setImg(productSelected.images?.indexOf(image))
     }
     
     return (
@@ -44,15 +50,15 @@ const ProductsId = () => {
             <div className='details'>
                 <div className='details__img'>
                     {img > 0 &&
-                        <i className='bx bxs-left-arrow-circle bx-lg' onClick={() => setImg(img - 1)}></i>}
+                        <i className='bx bxs-left-arrow-circle bx-lg' onClick={() => prev()}></i>}
                     {img < productSelected.images?.length - 1 &&
-                        <i className='bx bxs-right-arrow-circle bx-lg' onClick={() => setImg(img + 1)}></i>}
-                    <img className='img_selected' src={getImg()} alt="" />
+                        <i className='bx bxs-right-arrow-circle bx-lg' onClick={() => next()}></i>}
+                    <img className='img_selected' src={imgSelected?.url} alt="" />
                     <div className='preview'>
                         {productSelected.images?.map(image => (
                             <div className='img_preview'
-                                style={{ borderColor: productSelected.images[img] === image ? "salmon" : "white" }}
-                                key={image.id} onClick={() => setImgSelected(image)}>
+                                style={{ borderColor: imgSelected?.url === image.url  ? "salmon" : "white" }}
+                                key={image.id} onClick={() => selectImg(image)}>
                                 <img src={image?.url} alt="" />
                             </div>
                         ))

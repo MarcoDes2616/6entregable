@@ -28,22 +28,24 @@ const Home = () => {
                     <Filter categories={categories} />
                 </div>
                 <div className='product_container'>
-                <InputGroup className="mb-3">
-                    <Form.Control
-                        placeholder="Recipient's username"
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
-                        value={newsSearch}
-                        onChange={(e) => setNewsSearch(e.target.value)}
-                    />
-                    <Button
-                        onClick={() => dispatch(getProductSearch(newsSearch))}
-                        variant="outline-secondary"
-                        id="button-addon2"
-                    >
-                        Button
-                    </Button>
-                </InputGroup>
+                    <div className='input'>
+                        <InputGroup className="mb-3">
+                            <Form.Control
+                                placeholder="Buscar articulo"
+                                aria-label="Recipient's username"
+                                aria-describedby="basic-addon2"
+                                value={newsSearch}
+                                onChange={(e) => setNewsSearch(e.target.value)}
+                            />
+                            <Button
+                                onClick={() => dispatch(getProductSearch(newsSearch))}
+                                variant="outline-secondary"
+                                id="button-addon2"
+                            >
+                                Buscar
+                            </Button>
+                        </InputGroup>
+                    </div>
                     {products.map(product => (
                         <ProductCard product={product} key={product.id} />
                     ))}
