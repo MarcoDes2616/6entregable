@@ -1,0 +1,134 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.produc_detail{
+    padding: 5rem 3rem;
+}
+.details{
+    padding: 2rem 0;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+}
+.details__img{
+    position: relative;
+    width: 50%;
+    padding: 1rem;
+    background-color: #ffffff;
+}
+.preview{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    background-color: white;
+}
+.preview img{
+    max-width: 100px;
+    max-height: 70px;
+}
+.details__img img{
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+}
+.details__img .bx{
+    position: absolute;
+    top: calc(50% - 80px);
+    color: moccasin;
+    cursor: pointer;
+    filter: drop-shadow(1px 1px 1px #002b36);
+}
+.details__img .bx:hover{
+    scale: 1.1;
+}
+.img_selected{
+    max-height: 180px;
+    object-fit: contain;
+}
+.bxs-left-arrow-circle{
+    left: 0;
+}
+.bxs-right-arrow-circle{
+    right: 0;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid;
+    width: 50%;
+}
+.product_sugestions{
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 1rem;
+    border-top: 1px solid navajowhite;
+}
+.product_sugestions h2{
+    width: 100%;
+}
+.product_container{
+    width: calc(100% - 300px);
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.img_card{
+    max-width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+.aside_products{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+.aside{
+    position: fixed;
+    top: 56px;
+    padding: 1rem;
+    padding-top: 3rem;
+    left: 0;
+    width: 240px;
+    height: calc(100vh - 56px);
+    border-right: 1px solid white;
+}
+.categories:hover{
+    cursor: pointer;
+    color: blanchedalmond;
+}
+.filters{
+    height: 100px;
+    margin-bottom: .5rem;
+}
+.filters p{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.461);
+}
