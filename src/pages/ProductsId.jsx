@@ -14,7 +14,6 @@ const ProductsId = () => {
     const loading = useSelector(state => state.loading)
     const dispatch = useDispatch();
     const productsSuggestions = useSelector(state => state.products)
-    const navigate = useNavigate();
     const [img, setImg] = useState(0)
     const [quanty, setQuanty] = useState(1)
     const [imgSelected, setImgSelected] = useState({})

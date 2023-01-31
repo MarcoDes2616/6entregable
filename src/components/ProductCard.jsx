@@ -9,10 +9,10 @@ const ProductCard = ({ product }) => {
     const navigate = useNavigate();
     
     return (
-        <Card className='card' style={{ width: '18rem' }} onClick={() => navigate(`/products/${product.id}`)} >
-            <Card.Img className='img_card' variant="top" src={product.images?.[0].url} />
+        <Card className='card' style={{backgroundColor: "white", width: '16rem', height: '21rem' }} onClick={() => navigate(`/products/${product.id}`)} >
+            <Card.Img style={{ width: '90%' }} className='img_card' variant="top" src={product.images?.[0].url} />
             <Card.Body>
-                <Card.Title>{product.title}</Card.Title>
+                <Card.Title style={{fontSize: "1.1rem"}}>{product.title.slice(0, 49)}</Card.Title>
                 <Card.Text>
                     {product.price}
                 </Card.Text>
