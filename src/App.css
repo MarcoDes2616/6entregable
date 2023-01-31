@@ -174,3 +174,9 @@
     justify-content: center;
     align-items: center;
 }
+.form{
+    margin: 0 auto;
+    margin-top: 7rem;
+    width: 400px;
+    
+}
