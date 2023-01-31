@@ -22,7 +22,7 @@ function App() {
   return (
     <HashRouter>
       <NavBar />
-      {loading && <Loading />}
+        {loading && <Loading />}
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path={"/login"} element={<Login />} />

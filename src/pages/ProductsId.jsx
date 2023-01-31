@@ -76,7 +76,7 @@ const ProductsId = () => {
                             <p>Cantidad</p>
                             <div className='quanty_controler'>
                                 <Button disabled={quanty < 2} variant="success" onClick={() => setQuanty(quanty - 1)}>-</Button>
-                                <p>{quanty}</p>
+                                        <p>{quanty}</p>
                                 <Button variant="success" onClick={() => setQuanty(quanty + 1)}>+</Button>
                             </div>
                         </div>
