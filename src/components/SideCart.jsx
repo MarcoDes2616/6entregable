@@ -8,7 +8,6 @@ import getConfig from '../utils/getConfig';
 
 
 const SideCart = ({ show, handleClose }) => {
-    const [quanty, setQuanty] = useState(1)
     const cart = useSelector(state => state.cart)
     const dispatch = useDispatch()
     const [totalP, setTotalP] = useState([])

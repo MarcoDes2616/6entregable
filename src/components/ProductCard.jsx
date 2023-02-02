@@ -9,13 +9,18 @@ import {  } from 'react-hook-form';
 const ProductCard = ({ product }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const token = localStorage.getItem("token")
 
     const data = {
         "quantity": 1,
         "productId": product.id,
     }
     const addProduct = () => {
-        dispatch(addCartThunk(data))
+        if(token){
+            dispatch(addCartThunk(data))
+        } else {
+            navigate("/login")
+        }  
     }
 
     return (

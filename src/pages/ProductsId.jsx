@@ -18,6 +18,8 @@ const ProductsId = () => {
     const [img, setImg] = useState(0)
     const [quanty, setQuanty] = useState(1)
     const [imgSelected, setImgSelected] = useState({})
+    const token = localStorage.getItem("token")
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(setLoading(true))
@@ -49,7 +51,11 @@ const ProductsId = () => {
         "productId": productSelected.id,
     }
     const addProduct = () => {
-        dispatch(addCartThunk(data))
+        if(token){
+            dispatch(addCartThunk(data))
+        } else {
+            navigate("/login")
+        }  
     }
     
     return (
