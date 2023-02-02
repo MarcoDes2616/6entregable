@@ -17,6 +17,7 @@ const ProductCard = ({ product }) => {
     }
     const addProduct = () => {
         if(token){
+            alert("Se ha agregado un articulo")
             dispatch(addCartThunk(data))
         } else {
             navigate("/login")
