@@ -21,8 +21,10 @@ export const getCartThunk = () => dispatch => {
         .finally(() => dispatch(setLoading(false)));
 }
 export const addCartThunk = (data) => dispatch => {
+    dispatch(setLoading(true));
     return axios.post("https://e-commerce-api-v2.academlo.tech/api/v1/cart", data, getConfig())
         .then((res) => dispatch(getCartThunk(res.data)))
+        .finally(() => dispatch(setLoading(false)));
 }
 
 export const { setCart } = cartSlice.actions;

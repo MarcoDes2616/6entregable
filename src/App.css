@@ -51,7 +51,6 @@
 .card:hover{
     cursor: pointer;
 }
-
 .details{
     width: 90%;
     max-width: 1000px;
@@ -181,6 +180,7 @@
     justify-content: space-between;
     padding: .5rem;
     border-radius: 5px;
+    color: white;
     background-color: rgba(0, 0, 0, 0.461);
 }
 .quanty_price{
@@ -263,7 +263,10 @@
 .cart_controler div{
     display: flex;
 }
-
+.overlay{
+    position: fixed;
+    z-index: 3999;
+}
 @media screen and (min-width: 900px) {
     .details{
         flex-direction: row;

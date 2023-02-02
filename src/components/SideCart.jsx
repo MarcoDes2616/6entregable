@@ -11,8 +11,8 @@ const SideCart = ({ show, handleClose }) => {
     const [quanty, setQuanty] = useState(1)
     const cart = useSelector(state => state.cart)
     const dispatch = useDispatch()
+    const [totalP, setTotalP] = useState([])
 
-    console.log(cart);
     useEffect(() => {
         dispatch(getCartThunk())
     }, [])
@@ -45,6 +45,19 @@ const SideCart = ({ show, handleClose }) => {
                 dispatch(getCartThunk())
             })
     }
+    
+    useEffect(() => {
+        setTotalP(cart?.map(product => {
+           return product.quantity * product.product.price;
+        }))
+    }, [cart])
+
+    const getTotal = () => {
+        let totalG = 0
+        for(let i = 0; i < totalP?.length; i++){
+            totalG += totalP[i]
+        }return totalG
+    }
 
     return (
         <Offcanvas placement='end' show={show} onHide={handleClose}>
@@ -60,15 +73,18 @@ const SideCart = ({ show, handleClose }) => {
                             <div className='cart_controler'>
                                 <p>{product.product.title.slice(0, 30)}</p>
                                 <div>
-                                <Button disabled={quanty < 2} variant="success" onClick={() => restQuantity(product)}>-</Button>
+                                <Button disabled={product.quantity < 2} variant="success" onClick={() => restQuantity(product)}>-</Button>
                                         <p>{product.quantity}</p>
                                 <Button variant="success" onClick={() => addQuantity(product)}>+</Button>
                                 </div>
                             </div>
+                            <p>{product.quantity * product.product.price}</p>
                         </div>
                         <i onClick={() => deleteProduct(product.id)} className='bx bxs-ghost bx-md'></i>
                     </div>
                 ))}
+                <br /><br />
+                <p>total: {getTotal().toFixed(2)}</p>
                 <button onClick={() => checkOut()}>CheckOut</button>
             </Offcanvas.Body>
         </Offcanvas>
