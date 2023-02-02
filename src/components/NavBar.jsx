@@ -14,7 +14,14 @@ const NavBar = () => {
     //canvas cart
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        if(token){
+            setShow(true)
+        } else {
+            navigate("/login")
+        }
+        
+    };
 
     const logout = () => {
         localStorage.setItem("token", "")
@@ -39,6 +46,9 @@ const NavBar = () => {
                             <Nav.Link as={Link} to={"/"}>Home</Nav.Link>
                             <Nav.Link as={Link} to={"/login"}><i className='bx bx-user bx-sm'></i></Nav.Link>
                             <Nav.Link onClick={() => getPurchases()}><i className='bx bx-list-check bx-md'></i></Nav.Link>
+                            {
+                                
+                            }
                             <Nav.Link onClick={handleShow}><i className='bx bx-cart-alt bx-sm'></i></Nav.Link>
                             {token &&
                                 <Nav.Link onClick={() => logout()}>Log Out</Nav.Link>
