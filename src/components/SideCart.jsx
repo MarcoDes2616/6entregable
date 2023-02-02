@@ -11,9 +11,12 @@ const SideCart = ({ show, handleClose }) => {
     const cart = useSelector(state => state.cart)
     const dispatch = useDispatch()
     const [totalP, setTotalP] = useState([])
+    const token = localStorage.getItem("token")
 
     useEffect(() => {
-        dispatch(getCartThunk())
+        if(token){
+            dispatch(getCartThunk())
+        }
     }, [])
 
     const deleteProduct = (id) => {
