@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
+import { addCartThunk } from '../store/slices/cart.slice';
 import { setLoading } from '../store/slices/loading.slice';
 import { filterCategoryThunk } from '../store/slices/products.slice';
 
@@ -42,6 +43,14 @@ const ProductsId = () => {
         setImgSelected(image)
         setImg(productSelected.images?.indexOf(image))
     }
+
+    const data = {
+        "quantity": quanty,
+        "productId": productSelected.id,
+    }
+    const addProduct = () => {
+        dispatch(addCartThunk(data))
+    }
     
     return (
         <div className='produc_detail'>
@@ -76,12 +85,12 @@ const ProductsId = () => {
                             <p>Cantidad</p>
                             <div className='quanty_controler'>
                                 <Button disabled={quanty < 2} variant="success" onClick={() => setQuanty(quanty - 1)}>-</Button>
-                                        <p>{quanty}</p>
+                                <p>{quanty}</p>
                                 <Button variant="success" onClick={() => setQuanty(quanty + 1)}>+</Button>
                             </div>
                         </div>
                     </div>
-                    <Button variant="primary">Agregar al Carrito</Button>
+                    <Button variant="primary" onClick={() => addProduct()}>Agregar al Carrito</Button>
                 </div>
             </div>
             <div className='product_sugestions'>

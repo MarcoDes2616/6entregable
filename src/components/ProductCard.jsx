@@ -1,13 +1,23 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Form, useNavigate } from 'react-router-dom';
+import { addCartThunk } from '../store/slices/cart.slice';
 import { filterCategoryThunk } from '../store/slices/products.slice';
+import {  } from 'react-hook-form';
 
 const ProductCard = ({ product }) => {
     const navigate = useNavigate();
-    
+    const dispatch = useDispatch();
+
+    const data = {
+        "quantity": 1,
+        "productId": product.id,
+    }
+    const addProduct = () => {
+        dispatch(addCartThunk(data))
+    }
+
     return (
         <Card className='card' style={{backgroundColor: "white", width: '16rem', height: '21rem' }} onClick={() => navigate(`/products/${product.id}`)} >
             <Card.Img style={{ width: '90%' }} className='img_card' variant="top" src={product.images?.[0].url} />
@@ -16,9 +26,9 @@ const ProductCard = ({ product }) => {
                 <Card.Text>
                     {product.price}
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary" onClick={() => addProduct()}>Agregar<i className='bx bx-cart-download bx-fade-right' ></i></Button>
             </Card.Body>
-        </Card>
+        </Card> 
     );
 };
 
