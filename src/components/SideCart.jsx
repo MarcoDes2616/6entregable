@@ -21,7 +21,7 @@ const SideCart = ({ show, handleClose }) => {
         axios.delete(`https://e-commerce-api-v2.academlo.tech/api/v1/cart/${id}/`, getConfig())
             .then(res => dispatch(getCartThunk()))
     }
-    
+
     const addQuantity = (product) => {
         const data = {
             "quantity": product.quantity + 1
@@ -45,18 +45,18 @@ const SideCart = ({ show, handleClose }) => {
                 dispatch(getCartThunk())
             })
     }
-    
+
     useEffect(() => {
         setTotalP(cart?.map(product => {
-           return product.quantity * product.product.price;
+            return product.quantity * product.product.price;
         }))
     }, [cart])
 
     const getTotal = () => {
         let totalG = 0
-        for(let i = 0; i < totalP?.length; i++){
+        for (let i = 0; i < totalP?.length; i++) {
             totalG += totalP[i]
-        }return totalG
+        } return totalG
     }
 
     return (
@@ -65,27 +65,29 @@ const SideCart = ({ show, handleClose }) => {
                 <Offcanvas.Title>Carrito de compras</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-                <div className='cart_container'></div>
-                {cart.map(product => (
-                    <div className='cart' key={product.createdAt}>
-                        <img src={product.product.images?.[0].url} alt="" />
-                        <div className='cart_description'>
-                            <div className='cart_controler'>
-                                <p>{product.product.title.slice(0, 30)}</p>
-                                <div>
-                                <Button disabled={product.quantity < 2} variant="success" onClick={() => restQuantity(product)}>-</Button>
-                                        <p>{product.quantity}</p>
-                                <Button variant="success" onClick={() => addQuantity(product)}>+</Button>
+                <div className='cart_container'>
+                    {cart.map(product => (
+                        <div className='cart' key={product.createdAt}>
+                            <img src={product.product.images?.[0].url} alt="" />
+                            <div className='cart_description'>
+                                <h5>{product.product.title.slice(0, 30)}</h5>
+                                <div className='cart_controler'>
+                                    <Button disabled={product.quantity < 2} variant="success" onClick={() => restQuantity(product)}>-</Button>
+                                    <p>{product.quantity}</p>
+                                    <Button variant="success" onClick={() => addQuantity(product)}>+</Button>
                                 </div>
+                                <p>Sub-Total: $</p>
                             </div>
-                            <p>{product.quantity * product.product.price}</p>
+                            <div className='delete_total'>
+                                <i onClick={() => deleteProduct(product.id)} className='bx bxs-x-circle bx-sm'></i>
+                                <p>{product.quantity * product.product.price}</p>
+                            </div>
+
                         </div>
-                        <i onClick={() => deleteProduct(product.id)} className='bx bxs-ghost bx-md'></i>
-                    </div>
-                ))}
-                <br /><br />
-                <p>total: {getTotal().toFixed(2)}</p>
-                <button onClick={() => checkOut()}>CheckOut</button>
+                    ))}
+                    <p>Total: {getTotal().toFixed(2)}</p>
+                    <button className='checkout' onClick={() => checkOut()}><i className='bx bxs-credit-card'></i>CheckOut</button>
+                </div>
             </Offcanvas.Body>
         </Offcanvas>
     );

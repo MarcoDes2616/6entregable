@@ -38,7 +38,7 @@ const ProductsId = () => {
         setImg(img + 1)
         setImgSelected(productSelected.images?.[img+1])
     }
-
+    
     const selectImg = (image) => {
         setImgSelected(image)
         setImg(productSelected.images?.indexOf(image))

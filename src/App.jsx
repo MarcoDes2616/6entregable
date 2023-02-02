@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import ProtectedRoutes from './components/ProtectedRoutes'
