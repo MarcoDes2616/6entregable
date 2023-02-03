@@ -293,6 +293,12 @@
     position: fixed;
     z-index: 3999;
 }
+.logout{
+    background-color: #002b36;
+    color: white;
+    padding: .5rem 1rem;
+    border: none;
+}
 @media screen and (min-width: 900px) {
     .details{
         flex-direction: row;
